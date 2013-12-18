@@ -1,13 +1,35 @@
-# Compiled Object files
-*.slo
-*.lo
+# Compiled stuff
+
+*.com
+*.class
+
+*.exe
 *.o
-
-# Compiled Dynamic libraries
 *.so
-*.dylib
+*.pdb
+*.manifest
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
+bin
+obj
+
+# Lib paths
+
+include
+lib
+
+# Code Blocks stuff
+
+*.layout
+*.depend
+*.cbTemp
+
+# OS stuff
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
