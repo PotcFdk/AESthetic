@@ -16,8 +16,6 @@ limitations under the License.
 
 #include <aes.hpp>
 
-using namespace std;
-
 int main()
 {
     AES * aes = new AES();
