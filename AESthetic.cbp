@@ -37,17 +37,23 @@
 		<Unit filename="aes/aes.cpp" />
 		<Unit filename="aes/aes.hpp" />
 		<Unit filename="aes/data.cpp" />
+		<Unit filename="aes/decrypt.cpp" />
 		<Unit filename="aes/encrypt.cpp" />
 		<Unit filename="aes/key.cpp" />
 		<Unit filename="aes/keyAdd.cpp" />
+		<Unit filename="aes/keyAddInv.cpp" />
 		<Unit filename="aes/mixColumns.cpp" />
+		<Unit filename="aes/mixColumnsInv.cpp" />
 		<Unit filename="aes/print.cpp" />
 		<Unit filename="aes/rcon.cpp" />
 		<Unit filename="aes/round.cpp" />
 		<Unit filename="aes/roundKey.cpp" />
-		<Unit filename="aes/sbox.cpp" />
+		<Unit filename="aes/sBox.cpp" />
+		<Unit filename="aes/sBoxInv.cpp" />
 		<Unit filename="aes/shiftRows.cpp" />
+		<Unit filename="aes/shiftRowsInv.cpp" />
 		<Unit filename="aes/subBytes.cpp" />
+		<Unit filename="aes/subBytesInv.cpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
