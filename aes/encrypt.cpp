@@ -34,45 +34,52 @@ void AES::encrypt()
     printData();
 }
 
-void AES::verboseEncrypt()
+void AES::verboseEncryptNoReset()
 {
-    round = 0;
-
-    std::cout << "Round " << round << " plaintext:" << std::endl;
+    if (round == 0)
+    {
+        std::cout << "Round " << round << " plaintext:" << std::endl;
         printData();
 
-    keyAdd();
+        keyAdd();
 
-    std::cout << std::endl << "Round " << round << " keyAdd:" << std::endl;
+        std::cout << std::endl << "Round " << round << " keyAdd:" << std::endl;
         printData();
 
-    round++;
+        round++;
+    }
 
     for (; round < 10; round++)
     {
         std::cout << std::endl << "Round " << round << " plaintext:" << std::endl;
-            printData();
+        printData();
         subBytes();
         std::cout << std::endl << "Round " << round << " subBytes:" << std::endl;
-            printData();
+        printData();
         shiftRows();
         std::cout << std::endl << "Round " << round << " shiftRows:" << std::endl;
-            printData();
+        printData();
         mixColumns();
         std::cout << std::endl << "Round " << round << " mixColumns:" << std::endl;
-            printData();
+        printData();
         keyAdd();
         std::cout << std::endl << "Round " << round << " keyAdd:" << std::endl;
-            printData();
+        printData();
     }
 
     subBytes();
     std::cout << std::endl << "Round " << round << " subBytes:" << std::endl;
-            printData();
+    printData();
     shiftRows();
     std::cout << std::endl << "Round " << round << " shiftRows:" << std::endl;
-            printData();
+    printData();
     keyAdd();
     std::cout << std::endl << "Round " << round << " keyAdd / ciphertext:" << std::endl;
-            printData();
+    printData();
+}
+
+void AES::verboseEncrypt()
+{
+    round = 0;
+    verboseEncryptNoReset();
 }

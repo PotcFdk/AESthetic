@@ -16,7 +16,25 @@ limitations under the License.
 
 #include <aes.hpp>
 
-void AES::mixColumns()
+uint8_t mul (uint16_t num, uint8_t mul)
+{
+        uint8_t o = 0;
+
+        for (int i = 0; i < 8; i++)
+        {
+            if (mul & (1 << i))
+                o ^= num;
+            num <<= 1;
+            if (num & 0x100)
+            { // reduce it
+                num ^= 0b11011;
+            }
+        }
+
+        return o;
+}
+
+void AES::mixColumnsInv()
 {
     uint16_t res;
     uint8_t a,b,c,d;
@@ -25,22 +43,22 @@ void AES::mixColumns()
     {
         a = data[0+i*4], b = data[1+i*4], c = data[2+i*4], d = data[3+i*4];
 
-        res = (a << 1) ^ ((b << 1) ^ b) ^ c ^ d;
+        res = mul(a, 0xE) ^ mul(b, 0xB) ^ mul(c, 0xD) ^ mul(d, 0x9);
         if (res & mag)
             res ^= reduce;
         data[0+i*4] = res;
 
-        res = a ^ (b << 1) ^ ((c << 1) ^ c) ^ d;
+        res = mul(a, 0x9) ^ mul(b, 0xE) ^ mul(c, 0xB) ^ mul(d, 0xD);
         if (res & mag)
             res ^= reduce;
         data[1+i*4] = res;
 
-        res = a ^ b ^ (c << 1) ^ ((d << 1) ^ d);
+        res = mul(a, 0xD) ^ mul(b, 0x9) ^ mul(c, 0xE) ^ mul(d, 0xB);
         if (res & mag)
             res ^= reduce;
         data[2+i*4] = res;
 
-        res = ((a << 1) ^ a) ^ b ^ c ^ (d << 1);
+        res = mul(a, 0xB) ^ mul(b, 0xD) ^ mul(c, 0x9) ^ mul(d, 0xE);
         if (res & mag)
             res ^= reduce;
         data[3+i*4] = res;
