@@ -16,12 +16,20 @@ limitations under the License.
 
 #include <aes.hpp>
 
-void AES::runRound()
+void AES::runEncRound()
 {
     subBytes();
     shiftRows();
     mixColumns();
     keyAdd();
+}
+
+void AES::runDecRound()
+{
+    keyAddInv();
+    mixColumnsInv();
+    shiftRowsInv();
+    subBytesInv();
 }
 
 void AES::setRound(int round)

@@ -21,16 +21,15 @@ void AES::decrypt()
 {
     round = 0;
 
-    keyAdd();
+    keyAddInv();
+    shiftRowsInv();
+    subBytesInv();
     round++;
 
     for (; round < 10; round++)
-        runRound();
+        runDecRound();
 
-    subBytes();
-    shiftRows();
-    keyAdd();
-
+    keyAddInv();
     printData();
 }
 

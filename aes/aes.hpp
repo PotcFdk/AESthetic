@@ -34,7 +34,8 @@ public:
     void genRoundKeys();
     void initRoundKeys();
 
-    void runRound();
+    void runEncRound();
+    void runDecRound();
 
     void encrypt();
     void verboseEncrypt();
